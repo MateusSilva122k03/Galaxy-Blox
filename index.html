@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <title>Galaxy Blox - Loja Oficial</title>
+    <meta name="description" content="Compre Robux com segurança e entrega automática." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #030308;
+        color: white;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      /* Typography Override for Headings */
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Space Grotesk', sans-serif;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #030308;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #4c1d95;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #6d28d9;
+      }
+      
+      /* 
+         UNIFIED GALAXY GLASS STYLE - MAX PERFORMANCE MODE
+      */
+      .glass-panel {
+        background: rgba(15, 10, 30, 0.92); /* High opacity to reduce background blending cost */
+        backdrop-filter: blur(8px); /* Low blur radius is much faster */
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.3); /* Simpler shadow */
+        transform: translateZ(0);
+      }
+
+      .glass-card {
+        /* 
+           PERFORMANCE TRICK:
+           Darker background (0.92) means the GPU calculates less transparency.
+           Blur reduced to 6px (sweet spot for mobile).
+        */
+        background: linear-gradient(180deg, rgba(20, 10, 35, 0.92) 0%, rgba(5, 3, 10, 0.96) 100%);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.5);
+        transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        
+        /* Layout Optimization */
+        contain: content; /* Critical: prevents browser from repainting whole page when card changes */
+        transform: translate3d(0, 0, 0);
+        will-change: transform; 
+      }
+      
+      .glass-card:active {
+        transform: scale(0.98) translateZ(0);
+      }
+
+      /* DOPAMINE TRIGGERS */
+      
+      @keyframes sheen {
+        0% { transform: translateX(-150%) skewX(-15deg); }
+        100% { transform: translateX(150%) skewX(-15deg); }
+      }
+      
+      .sheen-effect {
+        position: relative;
+        overflow: hidden;
+      }
+      /* Only animate sheen when in viewport or interaction to save battery/CPU */
+      .sheen-effect::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+        transform: translateX(-150%) skewX(-15deg);
+        animation: sheen 3s infinite linear;
+        pointer-events: none;
+      }
+
+      /* Animations - Optimized with translate3d */
+      @keyframes float {
+        0%, 100% { transform: translate3d(0, 0, 0); }
+        50% { transform: translate3d(0, -8px, 0); }
+      }
+      .animate-float {
+        animation: float 5s ease-in-out infinite;
+        will-change: transform;
+      }
+      
+      @keyframes float-fast {
+        0%, 100% { transform: translate3d(0, 0, 0); }
+        50% { transform: translate3d(0, -4px, 0); }
+      }
+      .animate-float-fast {
+        animation: float-fast 3s ease-in-out infinite;
+        will-change: transform;
+      }
+
+      @keyframes pulse-slow {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 0.6; }
+      }
+      .animate-pulse-slow {
+        animation: pulse-slow 4s ease-in-out infinite;
+        will-change: opacity;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              galaxy: {
+                bg: '#030308',
+                card: '#0c0c16',
+                primary: '#a855f7',
+                secondary: '#fbbf24',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Space Grotesk', 'sans-serif'],
+            },
+            backgroundImage: {
+              'galaxy-pattern': "url('https://i.pinimg.com/736x/de/7f/16/de7f168619fbe7e3f77302d64937d84f.jpg')",
+            }
+          }
+        }
+      }
+    </script>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.4",
+        "react/": "https://esm.sh/react@^19.2.4/",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+        "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
